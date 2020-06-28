@@ -1,6 +1,6 @@
 ## Aplicação
 
-https://igti-projeto-aplicado.herokuapp.com/
+https://igti-pa-lincoln-lopes.herokuapp.com/
 
 # Projeto: Classificação de processos para distribuição entre assessores.
 
