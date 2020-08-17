@@ -1,52 +1,48 @@
 import Sequelize, { Model } from 'sequelize';
 
-export default class User extends Model {
+export default class Issue extends Model {
   static init(sequelize) {
     super.init({
-      fullname: {
+      summary: {
         type: Sequelize.STRING,
         defaultValue: '',
         validate: {
-          len: {
-            ags: [3, 60],
-            msg: 'The full name must be between 6 and 32 characters!',
+          notEmpty: {
+            msg: 'Field cannot be empty!',
           },
         },
       },
-      purpose: {
+      description: {
         type: Sequelize.STRING,
         defaultValue: '',
         validate: {
-          isEmail: {
-            msg: 'E-mail invalid!',
+          notEmpty: {
+            msg: 'Field cannot be empty',
           },
         },
       },
-      password_hash: { type: Sequelize.STRING, defaultValue: '' },
-      password: {
-        type: Sequelize.VIRTUAL,
-        defaultValue: '',
+      open_at: {
+        type: Sequelize.DATE,
+        defaultValue: null,
+        allowNull: true,
         validate: {
-          len: {
-            ags: [6, 32],
-            msg: 'Password must be between 6 and 32 characters!',
-          },
+          isDate: true,
         },
       },
-      enrollment: Sequelize.STRING,
-      quota: Sequelize.FLOAT,
+      close_at: {
+        type: Sequelize.DATE,
+        defaultValue: null,
+        allowNull: true,
+        validate: {
+          isDate: true,
+        },
+      },
     }, { sequelize });
-
-    this.addHook('beforeSave', async (user) => {
-      if (user.password) {
-        // eslint-disable-next-line no-param-reassign
-        user.password_hash = await bcrypt.hash(user.password, 8);
-      }
-    });
     return this;
   }
 
-  passwordIsValid(password) {
-    return bcrypt.compare(password, this.password_hash);
+  static associate(models) {
+    this.belongsTo(models.Issue, { foreignKey: 'registered_by' });
+    this.belongsTo(models.Issue, { foreignKey: 'meeting_id' });
   }
 }
