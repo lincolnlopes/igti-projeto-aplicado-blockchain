@@ -3,10 +3,11 @@ import User from '../models/User';
 class UserController {
   async index(req, res) {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({ attributes: ['id', 'email', 'enrollment', 'quota'] });
       return res.json(users);
     } catch (error) {
-      return res.status(400).json({ erros: error.errors.map((err) => err.message) });
+      // return res.status(400).json({ erros: error.errors.map((err) => err.message) });
+      return res.status(400).json({ error });
     }
   }
 
@@ -15,7 +16,12 @@ class UserController {
       const { id } = req.params;
       const user = await User.findByPk(id);
       if (!user) return res.status(400).json({ message: 'User not found!' });
-      return res.json(user);
+      const {
+        fullname, email, enrollment, quota,
+      } = user;
+      return res.json({
+        id, fullname, email, enrollment, quota,
+      });
     } catch (error) {
       return res.status(400).json({ erros: error.errors.map((err) => err.message) });
     }

@@ -52,7 +52,7 @@ class IssueController {
       const newIssue = await issue.update(req.body);
       return res.json(newIssue);
     } catch (error) {
-      return res.status(400).json({ erros: error.errors.map((err) => err.message) });
+      return res.status(400).json({ error });
     }
   }
 }
