@@ -105,3 +105,4 @@ dist
 .DS_Store
 backend/testes/
 backend/.testes/*.*
+backend/dapp/truffle-config.js
