@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 //import logo from './logo.svg';
-import HelloWorld from './components/HelloWorld';
+import HowMany from './components/HowMany';
 
 export default function App() {
-  return <HelloWorld />;
+  return <HowMany />;
 }
