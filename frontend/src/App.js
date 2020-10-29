@@ -6,13 +6,11 @@ import './App.css';
 import HowMany from './components/HowMany';
 import Login from './components/Login';
 import Meeting from './components/Meeting';
-import Header from './Header';
 import Home from './Home';
 import NotFound from './NotFound';
 export default function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
