@@ -1,9 +1,15 @@
 import React from 'react';
-import { TOKEN_POST } from '../../api';
+import { TOKEN_POST, USER_GET } from '../../api';
 import useForm from '../../hooks/useForm';
 import Input from '../Forms/Input';
 
 const LoginForm = () => {
+  async function getUser(token) {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
+  }
   //const [username, setUsername] = React.useState('');
   //const [password, setPassword] = React.useState('');
 
@@ -29,6 +35,7 @@ const LoginForm = () => {
       const response = await fetch(url, options);
       const json = await response.json();
       window.localStorage.setItem('token', json.token);
+      getUser(json.token);
       //console.log(json);
     }
   }
