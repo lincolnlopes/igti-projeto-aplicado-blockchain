@@ -16,15 +16,15 @@ class TokenController {
     if (!(await user.passwordIsValid(password))) {
       return res.status(401).json({ erros: ["Invalid password!"] });
     }
-    const { id } = user;
-    const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
+    const { id, fullname } = user;
+    const token = jwt.sign({ id, fullname, email }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
     return res.json({ token });
   }
   async show(req, res) {
-    const { userId: id, userEmail: email } = req;
-    return res.json({ id, email });
+    const { userId: id, userFullname: fullname, userEmail: email } = req;
+    return res.json({ id, fullname, email });
   }
 }
 export default new TokenController();
