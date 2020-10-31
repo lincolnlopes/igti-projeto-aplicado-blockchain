@@ -1,20 +1,37 @@
 import React from 'react';
+import useForm from '../../hooks/useForm';
 import Input from '../Forms/Input';
 
 const LoginForm = () => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  //const [username, setUsername] = React.useState('');
+  //const [password, setPassword] = React.useState('');
+
+  const username = useForm();
+  const password = useForm();
+
+  // https://pt-br.reactjs.org/warnings/unknown-prop.html
+  // removo props antes de repassa-las
+  const usernameProps = Object.assign({}, username);
+  const passwordProps = Object.assign({}, password);
+  delete passwordProps.setValue;
+  delete usernameProps.setValue;
+  delete passwordProps.validate;
+  delete usernameProps.validate;
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(JSON.stringify({ username, password }));
-    const token = await fetch('http://localhost:3001/tokens', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: username, password }),
-    })
-      .then((response) => response.json())
-      .then(console.log);
+    if (username.validate() && password.validate()) {
+      const token = await fetch('http://localhost:3001/tokens', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: username.value,
+          password: password.value,
+        }),
+      })
+        .then((response) => response.json())
+        .then(console.log);
+    }
   }
   return (
     <section>
@@ -24,24 +41,23 @@ const LoginForm = () => {
           id="user"
           label="Usuário "
           type="text"
+          name="username"
           placeholder="Digite o seu e-mail ou núm.celular"
-          value={username}
           variant="outlined"
-          onChange={({ target }) => setUsername(target.value)}
+          {...usernameProps}
         />
 
         <Input
           id="password"
           label="Senha "
           type="password"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
+          {...passwordProps}
         />
 
         <Input
           id="submit"
           value="Entrar"
-          type="button"
+          type="submit"
           onClick={handleSubmit}
         />
       </form>

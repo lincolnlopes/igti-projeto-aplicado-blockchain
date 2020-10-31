@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = ({ id, label, type, ...props }) => {
+const Input = ({ id, label, type, error, ...props }) => {
   return (
     <div className={styles.wrapper}>
       {label && (
@@ -13,9 +13,9 @@ const Input = ({ id, label, type, ...props }) => {
         id={id}
         type={type}
         {...props}
-        className={type === 'button' ? styles.button : styles.input}
+        className={type === 'submit' ? styles.button : styles.input}
       />
-      <p className={styles.error}>Error</p>
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };
