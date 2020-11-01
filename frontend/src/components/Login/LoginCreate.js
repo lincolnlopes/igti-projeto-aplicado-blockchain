@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { USERS_STORE } from '../../api';
+import useFetch from '../../hooks/useFetch';
 import useForm from '../../hooks/useForm';
 import { UserContext } from '../../UserContext';
 import Input from '../Forms/Input';
+import Error from '../helpers/Error';
 
 const LoginCreate = () => {
   const name = useForm();
@@ -11,15 +13,15 @@ const LoginCreate = () => {
   const enrollment = useForm();
   const quota = useForm();
 
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const token = window.localStorage.getItem('token');
 
   const { userLogin } = React.useContext(UserContext);
+  const { loading, error, request } = useFetch();
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    setLoading(true);
     const { url, options } = USERS_STORE(token, {
       fullname: name.value,
       email: user.value,
@@ -28,9 +30,8 @@ const LoginCreate = () => {
       quota: quota.value,
     });
 
-    const response = await fetch(url, options);
+    const { response } = await request(url, options);
     if (response.ok) userLogin(user.value, password.value);
-    setLoading(false);
   }
   return (
     <section>
@@ -86,14 +87,9 @@ const LoginCreate = () => {
             onClick={handleSubmit}
           />
         ) : (
-          <Input
-            id="submit"
-            value="Carregando..."
-            type="submit"
-            disabled
-            onClick={handleSubmit}
-          />
+          <Input id="submit" value="Carregando..." disabled />
         )}
+        <Error error={error} />
       </form>
     </section>
   );
