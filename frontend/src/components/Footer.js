@@ -4,7 +4,8 @@ import styles from './Footer.module.css';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <h1>Developed by @lincolngyn</h1>
+      <h5>Developed by @lincolngyn</h5>
+      <h6>Projeto Aplicado | IGTI</h6>
     </div>
   );
 };

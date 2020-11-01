@@ -6,6 +6,10 @@ const types = {
     regex: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: 'Preecha um e-mail válido!',
   },
+  password: {
+    regex: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]){8,}/,
+    message: 'Senham muito fraca!',
+  },
 };
 
 const useForm = (type) => {

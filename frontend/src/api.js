@@ -29,3 +29,18 @@ export function TOKEN_VALIDATE_POST(token) {
     },
   };
 }
+
+export function USERS_STORE(token, body) {
+  console.log(JSON.stringify(body));
+  return {
+    url: API_URL + '/users',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

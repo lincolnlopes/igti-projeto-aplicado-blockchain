@@ -3,8 +3,8 @@
   font-family: var(--type-first);
   cursor: none;
   border-radius: 0.4rem;
-  background: #fb1;
-  color: #764701;
+  background: rgba(0, 54, 65, 0.5);
+  color: #fff;
   padding: 0.8rem 1.2rem;
   box-sizing: border-box;
 }
@@ -12,7 +12,7 @@
 .button:hover,
 .button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px #fea, 0 0 0 4px #fb1;
+  box-shadow: 0 0 0 3px rgba(238, 238, 238, 0.9);
 }
 .button:disabled {
   opacity: 0.5rem;
@@ -24,22 +24,22 @@
 }
 
 .input {
-  border: 1px solid #eee;
+  border: 1px solid rgba(238, 238, 238, 0.3);
   display: block;
   width: 100%;
   font-size: 1rem;
   padding: 0.8rem;
   border-radius: 0.4rem;
-  background: #eee;
+  background: rgba(238, 238, 238, 0.3);
   transition: 0.1s;
 }
 
 .input:focus,
 .input:hover {
   outline: none;
-  border-color: #fb1;
-  background: white;
-  box-shadow: 0 0 0 3px #fea;
+  border-color: rgba(0, 54, 65, 0.3);
+  background: rgba(238, 238, 238, 0.9);
+  box-shadow: 0 0 0 3px rgba(0, 54, 65, 0.3);
 }
 
 .label {
