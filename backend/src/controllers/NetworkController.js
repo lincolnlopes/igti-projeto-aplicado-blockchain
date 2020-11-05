@@ -6,6 +6,19 @@ import log from "../utils/providerLogs";
 
 dotenv.config();
 
+const web3 = new Web3(
+  new Web3.providers.HttpProvider(process.env.ROPSTEN_ENDPOINT)
+);
+
+// const networkId = web3.eth.net.getId();
+
+web3.eth.accounts.wallet.add(process.env.PRIVATE_KEY);
+
+const myContract = new web3.eth.Contract(
+  abi,
+  networks[process.env.ROPSTEN_NETWORK_ID].address
+);
+
 function getProvider() {
   const { WebsocketProvider } = Web3.providers;
 
@@ -21,8 +34,6 @@ function getProvider() {
   });
 }
 
-// const networkId = web3.eth.net.getId();
-
 class NetworkController {
   async index(_, res) {
     try {
@@ -37,15 +48,7 @@ class NetworkController {
 
   async qty(req, res) {
     try {
-      await log(true, req.ip, req.url, "");
-      const provider = await getProvider();
-      const web3 = new Web3(provider);
-      await web3.eth.accounts.wallet.add(process.env.PRIVATE_KEY);
-
-      const myContract = await new web3.eth.Contract(
-        abi,
-        networks[process.env.ROPSTEN_NETWORK_ID].address
-      );
+      log(true, req.ip, req.url, "");
 
       const len = await myContract.methods
         .getLength()
