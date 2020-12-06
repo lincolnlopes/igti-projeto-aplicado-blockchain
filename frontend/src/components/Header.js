@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Dogs } from '../assets/logo.svg';
 import { UserContext } from '../UserContext';
-import Input from './Form/Input';
+import Input from './Forms/Input';
 import styles from './Header.module.css';
 
 const Header = () => {

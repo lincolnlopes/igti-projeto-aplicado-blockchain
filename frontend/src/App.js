@@ -5,7 +5,7 @@ import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 //import logo from './logo.svg';
-import HowMany from './components/HowMany';
+//import HowMany from './components/HowMany';
 import Login from './components/Login';
 import LoginCreate from './components/Login/LoginCreate';
 import Meeting from './components/Meeting';
@@ -22,7 +22,6 @@ export default function App() {
             <Route path="/login/*" element={<Login />} />
             <Route path="/login/create" element={<LoginCreate />} />
             <Route path="/" element={<Home />} />
-            <Route path="/how" element={<HowMany />} />
             <Route path="/sobre" element={<About />} />
             <Route path="/reuniao/:id" element={<Meeting />} />
             <Route path="*" element={<NotFound />} />
