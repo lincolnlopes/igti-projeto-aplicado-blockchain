@@ -44,3 +44,33 @@ export function USERS_STORE(token, body) {
     },
   };
 }
+
+export function MEET_STORE(token, body) {
+  console.log(JSON.stringify(body));
+  return {
+    url: API_URL + '/meetings',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function ISSUE_STORE(token, body) {
+  console.log(JSON.stringify(body));
+  return {
+    url: API_URL + '/issues',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

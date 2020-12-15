@@ -3,9 +3,9 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import styles from './index.module.css';
-import MeetingCreate from './MeetingCreate';
+import IssueCreate from './IssueCreate';
 
-const Meeting = () => {
+const Issue = () => {
   const { login } = React.useContext(UserContext);
 
   if (login === true) {
@@ -14,17 +14,17 @@ const Meeting = () => {
 
   //const params = useParams();
   //const location = useLocation();
-  //console.log(params);
+  console.log(login);
   return (
     <section className={styles.login}>
       <div className={styles.forms}>
         <Routes>
-          <Route path="/" element={<Meeting />}></Route>
-          <Route path="/create" element={<MeetingCreate />}></Route>
+          <Route path="/" element={<Issue />}></Route>
+          <Route path="/create" element={<IssueCreate />}></Route>
         </Routes>
       </div>
     </section>
   );
 };
 
-export default Meeting;
+export default Issue;

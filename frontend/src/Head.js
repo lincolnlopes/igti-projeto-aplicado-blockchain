@@ -3,7 +3,7 @@ import React from 'react';
 const Head = (props) => {
   React.useEffect(() => {
     document.title = props.title;
-    console.log(props);
+    //console.log(props);
   }, [props]);
   return (
     <>
