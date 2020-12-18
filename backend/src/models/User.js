@@ -36,7 +36,7 @@ export default class User extends Model {
       },
       enrollment: Sequelize.STRING,
       quota: Sequelize.FLOAT,
-    }, { sequelize });
+    }, { sequelize, modelName: 'users' });
 
     this.addHook('beforeSave', async (user) => {
       if (user.password) {
