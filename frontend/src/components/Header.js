@@ -17,9 +17,7 @@ const Header = () => {
         <NavLink className={styles.login} to={!data ? '/login' : '#'}>
           {data ? data.fullname : 'Login'}
         </NavLink>
-        {data && (
-          <Input id="submit" value="Sair" type="button" onClick={userLogout} />
-        )}
+
       </nav>
     </header>
   );

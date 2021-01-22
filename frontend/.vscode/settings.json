@@ -1,4 +1,27 @@
 {
+      // Format settings
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+      "editor.codeActionsOnSaveTimeout": 1200,
+      "source.fixAll.eslint": true,
+      "source.organizeImports": false
+
+      },
+
+        // Prettier settings
+  "prettier.semi": true,
+  "prettier.endOfLine": "lf",
+  "prettier.singleQuote": true,
+
+  // ESLint settings
+  "eslint.packageManager": "yarn",
+  "eslint.format.enable": true,
+  "eslint.alwaysShowStatus": true,
+      
+      "prettier.jsxSingleQuote": false,
+
     "files.exclude": {
         "node_modules":true
     }
