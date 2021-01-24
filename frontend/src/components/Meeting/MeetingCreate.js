@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 //import { UserContext } from '../../UserContext';
 import Input from '../Forms/Input';
 import Error from '../helpers/Error';
+import styles from './MeetingCreate.module.css';
 
 const MeetingCreate = () => {
   const name = useForm();
@@ -33,9 +34,9 @@ const MeetingCreate = () => {
     await request(url, options);
   }
   return (
-    <section>
+    <section className="animeLeft">
       <h1 className="title">Novo Evento</h1>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Input
           id="name"
           label="Evento"

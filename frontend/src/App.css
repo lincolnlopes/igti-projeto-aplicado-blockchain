@@ -88,6 +88,7 @@ a {
   to {
     opacity: 1;
     transform: initial;
+    padding: 0 25px 0 25px;
   }
 }
 
@@ -103,4 +104,14 @@ a {
 
 .VictoryContainer {
   height: initial !important;
+}
+
+.form {
+  margin-bottom: 2rem;
+}
+
+.forms {
+  max-width: 30rem;
+  padding: 1rem;
+  margin-top: 20vh;
 }

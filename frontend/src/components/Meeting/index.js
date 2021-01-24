@@ -9,7 +9,7 @@ const Meeting = () => {
   const { login } = React.useContext(UserContext);
 
   if (login === true) {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   //const params = useParams();

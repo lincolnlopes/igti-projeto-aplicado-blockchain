@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '../Header'
-import UserHeaderNav from './UserHeaderNav'
+import IssueHeaderNav from './IssueHeaderNav'
 
-import styles from './UserHeader.module.css';
+import styles from './IssueHeader.module.css';
 import { useLocation } from 'react-router-dom';
 
-const UserHeader = () => {
+const IssueHeader = () => {
 
     const [title, setTitle] = React.useState('')
     const location = useLocation()
@@ -16,10 +16,10 @@ const UserHeader = () => {
             case '/conta':
                 setTitle('Minha Conta')
               break;
-            case '/conta/estatistica':
+            case '/pautas/cadastro':
                   setTitle('Estatística')
               break;
-            case '/conta/pautas':
+            case '/pautas/':
                   setTitle('Pautas')
               break;
             default:
@@ -31,9 +31,9 @@ const UserHeader = () => {
     return (
         <header className={styles.header}>
             <h1 className="title">{title}</h1>
-            <UserHeaderNav/>
+            <IssueHeaderNav/>
         </header>
     )
 }
 
-export default UserHeader
+export default IssueHeader

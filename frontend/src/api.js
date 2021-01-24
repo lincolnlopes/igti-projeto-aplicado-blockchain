@@ -74,3 +74,41 @@ export function ISSUE_STORE(token, body) {
     },
   };
 }
+
+export function ISSUE_GET(token) {
+  return {
+    url: API_URL + '/issues',
+    options: {
+      method: 'GET',
+      headers: { Authorization: 'Bearer ' + token },
+    },
+  };
+}
+
+export function PASSWORD_LOST(body) {
+  console.log(JSON.stringify(body));
+  return {
+    url: API_URL + '/account/forgot',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function PASSWORD_RESET(body) {
+  console.log(JSON.stringify(body));
+  return {
+    url: API_URL + '/account/reset',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

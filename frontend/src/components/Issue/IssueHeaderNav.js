@@ -6,10 +6,10 @@ import {ReactComponent as Conta} from '../../assets/usuario.svg'
 import {ReactComponent as Decisoes} from '../../assets/question.svg'
 import {ReactComponent as Sair} from '../../assets/sair.svg'
 //import styles from './index.module.css';
-import styles from './UserHeaderNav.module.css';
+import styles from './IssueHeaderNav.module.css';
 import useMedia from '../../hooks/useMedia'
 
-const UserHeaderNav = () => {   
+const IssueHeaderNav = () => {   
 
     const {userLogout}= React.useContext(UserContext);
     const mobile = useMedia('(max-width: 40rem)');
@@ -35,4 +35,4 @@ const UserHeaderNav = () => {
     )
 }
 
-export default UserHeaderNav
+export default IssueHeaderNav

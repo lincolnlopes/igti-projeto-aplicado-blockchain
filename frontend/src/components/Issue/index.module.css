@@ -1,9 +1,11 @@
+.icon {
+  width:18px; height:18px;}
+
 .login {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
   gap: 2rem;
-  padding: 0 25px 0 25px;
 }
 
 .login::before {

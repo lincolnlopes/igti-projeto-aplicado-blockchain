@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { ISSUE_STORE } from '../../api';
 import useFetch from '../../hooks/useFetch';
 import useForm from '../../hooks/useForm';
@@ -12,6 +12,7 @@ const IssueCreate = () => {
   const summary = useForm();
   const description = useForm();
   const params = useParams();
+  const navigate = useNavigate();
 
   //const [loading, setLoading] = useState(false);
   const token = window.localStorage.getItem('token');
@@ -30,7 +31,8 @@ const IssueCreate = () => {
       meeting_id: params.id,
     });
 
-    await request(url, options);
+    const { response } = await request(url, options);
+    if (response.ok) navigate('/pautas');
   }
   return (
     <section>
