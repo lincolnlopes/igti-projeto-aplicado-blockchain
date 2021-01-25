@@ -32,11 +32,10 @@ const IssueCreate = () => {
     });
 
     const { response } = await request(url, options);
-    if (response.ok) navigate('/pautas');
+    if (response.ok) navigate('/issues');
   }
   return (
     <section>
-      <h1 className="title">Nova Pauta</h1>
       <form onSubmit={handleSubmit}>
         {data ? data.id : 'Login'}
         <Input

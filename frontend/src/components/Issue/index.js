@@ -24,8 +24,9 @@ const Issue = () => {
 
         <IssueHeader/>
         <Routes>
-          <Route path="/*" element={<IssueList />}></Route>
-          <Route path="/create" element={<IssueCreate />}></Route>
+          <Route path="create/:id" element={<IssueCreate />}></Route>
+          <Route path="create" element={<IssueCreate />}></Route>
+          <Route path="/" exact={true} element={<IssueList />}></Route>
         </Routes>
 
     </section>

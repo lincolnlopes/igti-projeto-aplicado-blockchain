@@ -12,7 +12,7 @@ const Login = () => {
   const { login } = React.useContext(UserContext);
 
   if (login === true) {
-    return <Navigate to="/conta" />;
+    return <Navigate to="/" />;
   }
   return (
     <section className={styles.login}>

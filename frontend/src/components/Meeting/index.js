@@ -20,7 +20,7 @@ const Meeting = () => {
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<Meeting />}></Route>
-          <Route path="/create" element={<MeetingCreate />}></Route>
+          <Route path="create" element={<MeetingCreate />}></Route>
         </Routes>
       </div>
     </section>

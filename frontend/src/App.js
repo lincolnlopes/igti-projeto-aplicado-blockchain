@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import ProtectedRoute from './components/helpers/ProtectedRoute';
 import Issue from './components/Issue';
-import IssueCreate from './components/Issue/IssueCreate';
+//import IssueCreate from './components/Issue/IssueCreate';
 //import logo from './logo.svg';
 //import HowMany from './components/HowMany';
 import Login from './components/Login';
@@ -26,11 +26,11 @@ export default function App() {
           <Routes>
             <Route path="login/*" element={<Login />} />
             <Route path="login/create" element={<LoginCreate />} />
-            <ProtectedRoute path="conta/*" element={<User />} />
+            <ProtectedRoute path="user/*" element={<User />} />
             <Route path="sobre" element={<About />} />
-            <Route path="reuniao/:id" element={<Meeting />} />
-            <Route path="pautas/*" element={<Issue />} />
-            <Route path="reuniao/create" element={<MeetingCreate />} />
+            <Route path="meetings/:id" element={<Meeting />} />
+            <ProtectedRoute path="issues/*" element={<Issue />} />
+            <Route path="meeting/create" element={<MeetingCreate />} />
             <Route path="" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

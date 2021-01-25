@@ -13,13 +13,13 @@ const IssueHeader = () => {
     React.useEffect(() => {
     
         switch(location.pathname) {
-            case '/conta':
+            case '/user':
                 setTitle('Minha Conta')
               break;
-            case '/pautas/cadastro':
+            case '/issues/create':
                   setTitle('Estatística')
               break;
-            case '/pautas/':
+            case '/issues':
                   setTitle('Pautas')
               break;
             default:
