@@ -60,6 +60,17 @@ export function MEET_STORE(token, body) {
   };
 }
 
+export function MEET_SHOW(token, id) {
+  return {
+    url: API_URL + '/meetings/' + id,
+    options: {
+      method: 'GET',
+      headers: { Authorization: 'Bearer ' + token },
+    },
+  };
+}
+
+
 export function ISSUE_STORE(token, body) {
   console.log(JSON.stringify(body));
   return {

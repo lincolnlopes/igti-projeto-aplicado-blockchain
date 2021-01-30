@@ -28,9 +28,8 @@ export default function App() {
             <Route path="login/create" element={<LoginCreate />} />
             <ProtectedRoute path="user/*" element={<User />} />
             <Route path="sobre" element={<About />} />
-            <Route path="meetings/:id" element={<Meeting />} />
+            <ProtectedRoute path="meetings/*" element={<Meeting />} />
             <ProtectedRoute path="issues/*" element={<Issue />} />
-            <Route path="meeting/create" element={<MeetingCreate />} />
             <Route path="" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

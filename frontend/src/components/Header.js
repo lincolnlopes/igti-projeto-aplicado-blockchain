@@ -12,7 +12,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <NavLink className={styles.logo} to="/" end aria-label="Voting - Home">
-          <Dogs activeStyle={{ color: '#999ff9' }} />
+          <Dogs activestyle={{ color: '#999ff9' }} />
         </NavLink>{' '}
         <NavLink className={styles.login} to={!data ? '/login' : '#'}>
           {data ? data.fullname : 'Login'}
