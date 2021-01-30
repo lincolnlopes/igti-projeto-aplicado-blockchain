@@ -17,7 +17,7 @@ const IssueHeader = () => {
                 setTitle('Minha Conta')
               break;
             case '/issues/create':
-                  setTitle('Estatística')
+                  setTitle('Votação')
               break;
             case '/issues':
                   setTitle('Pautas')
