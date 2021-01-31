@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import { useParams } from 'react-router'
 import { MEET_SHOW, MEET_UPDATE } from '../../api';
 import useFetch from '../../hooks/useFetch';
@@ -9,27 +9,37 @@ import styles from './MeetingCreate.module.css';
 
 const MeetingEdit = () => {
 
-  //const [data, setData] = React.useState({});
-
   const name = useForm();
   const description = useForm();
   const startDate = useForm();
   const endDate = useForm();
 
   const {id} = useParams();
-  const token = window.localStorage.getItem('token');
   const { loading, error, request } = useFetch();
+  const token = window.localStorage.getItem('token');
   const { url, options } = MEET_SHOW(token, id);
   
-  React.useEffect(async () => {
+  /*React.useEffect(async () => {
     const {json} = await request(url, options);
-    console.log(json);
     name.setValue(json.name);
     description.setValue(json.description);
     startDate.setValue(json.started_at);
     endDate.setValue(json.ended_at);
-    //console.log(data)
-  },[]);
+  },[name, description,startDate,endDate, options, request, url]);
+  */
+
+  useEffect(() => {
+    async function fetchData() {
+      const {json} = await request(url, options);
+      
+      name.setValue(json.name);
+      description.setValue(json.description);
+      startDate.setValue(json.started_at);
+      endDate.setValue(json.ended_at);
+    }
+    fetchData();
+  }, []);
+
 
   async function handleSubmit(event) {
     event.preventDefault();

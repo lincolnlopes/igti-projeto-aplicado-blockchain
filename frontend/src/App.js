@@ -12,7 +12,7 @@ import Issue from './components/Issue';
 import Login from './components/Login';
 import LoginCreate from './components/Login/LoginCreate';
 import Meeting from './components/Meeting';
-import MeetingCreate from './components/Meeting/MeetingCreate';
+//import MeetingCreate from './components/Meeting/MeetingCreate';
 import User from './components/User';
 import Home from './Home';
 import NotFound from './NotFound';
@@ -26,12 +26,12 @@ export default function App() {
           <Routes>
             <Route path="login/*" element={<Login />} />
             <Route path="login/create" element={<LoginCreate />} />
+            <Route path="about" element={<About />} />
             <ProtectedRoute path="user/*" element={<User />} />
-            <Route path="sobre" element={<About />} />
             <ProtectedRoute path="meetings/*" element={<Meeting />} />
             <ProtectedRoute path="issues/*" element={<Issue />} />
-            <Route path="" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
+            <ProtectedRoute path="" element={<Home />} />
+            <ProtectedRoute path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </UserStorage>
