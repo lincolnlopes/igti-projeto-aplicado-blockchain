@@ -2,11 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Dogs } from '../assets/logo.svg';
 import { UserContext } from '../UserContext';
-import Input from './Forms/Input';
+//import Input from './Forms/Input';
 import styles from './Header.module.css';
 
 const Header = () => {
-  const { data, userLogout } = React.useContext(UserContext);
+  const { data } = React.useContext(UserContext);
 
   return (
     <header className={styles.header}>

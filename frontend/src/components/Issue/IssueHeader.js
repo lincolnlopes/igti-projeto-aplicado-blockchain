@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header'
+//import Header from '../Header'
 import IssueHeaderNav from './IssueHeaderNav'
 
 import styles from './IssueHeader.module.css';

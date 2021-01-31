@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import NotFound from '../../NotFound';
 import { UserContext } from '../../UserContext';
 import Head from '../helpers/Head';
-import styles from './index.module.css';
+//import styles from './index.module.css';
 import IssueCreate from './IssueCreate';
 import IssueHeader from './IssueHeader';
 import IssueList from './IssueList'
@@ -12,13 +12,10 @@ import IssueList from './IssueList'
 const Issue = () => {
   const { login } = React.useContext(UserContext);
 
-  if (login === false) {
+  if (!login) {
     return <Navigate to="/login" />;
   }
 
-  //const params = useParams();
-  //const location = useLocation();
-  console.log(login);
   return (
     <section className="container">
       <Head title='Minha conta'/>

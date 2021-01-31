@@ -10,13 +10,9 @@ const Meeting = () => {
   const { login } = React.useContext(UserContext);
 
   if (!login) {
-    console.log(login)
     return <Navigate to="/login" />;
   }
 
-  //const params = useParams();
-  //const location = useLocation();
-  //console.log(params);
   return (
     <section className={styles.login}>
       <div className={styles.forms}>
