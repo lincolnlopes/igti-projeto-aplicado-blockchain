@@ -9,7 +9,8 @@ import MeetingEdit from './MeetingEdit';
 const Meeting = () => {
   const { login } = React.useContext(UserContext);
 
-  if (login === false) {
+  if (!login) {
+    console.log(login)
     return <Navigate to="/login" />;
   }
 

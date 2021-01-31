@@ -60,6 +60,21 @@ export function MEET_STORE(token, body) {
   };
 }
 
+export function MEET_UPDATE(token, body, id) {
+  console.log(JSON.stringify(body), id);
+  return {
+    url: API_URL + '/meetings/' +id,
+    options: {
+      method: 'PUT',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
 export function MEET_SHOW(token, id) {
   return {
     url: API_URL + '/meetings/' + id,
