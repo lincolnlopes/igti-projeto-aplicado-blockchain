@@ -75,6 +75,16 @@ export function MEET_UPDATE(token, body, id) {
   };
 }
 
+export function MEET_GET(token) {
+  return {
+    url: API_URL + '/meetings',
+    options: {
+      method: 'GET',
+      headers: { Authorization: 'Bearer ' + token },
+    },
+  };
+}
+
 export function MEET_SHOW(token, id) {
   return {
     url: API_URL + '/meetings/' + id,

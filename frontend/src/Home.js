@@ -65,7 +65,7 @@ const Home = () => {
         />
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={() => navigate('/meeting')}>
+        <Button size="small" color="primary" onClick={() => navigate('/meetings')}>
           Evento
         </Button>
       </CardActions>
