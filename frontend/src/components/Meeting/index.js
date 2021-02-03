@@ -8,6 +8,7 @@ import MeetingCreate from './MeetingCreate';
 import MeetingEdit from './MeetingEdit';
 import MeetingHeader from './MeetingHeader';
 import MeetingList from './MeetingList';
+import MeetingViewList from './MeetingViewList';
 
 const Meeting = () => {
   const { login } = React.useContext(UserContext);
@@ -23,7 +24,7 @@ const Meeting = () => {
         <Routes>
           <Route path="edit/:id" element={<MeetingEdit />}></Route>
           <Route path="create" element={<MeetingCreate />}></Route>
-          <Route path="/" element={<MeetingList />}></Route>
+          <Route path="/" element={<MeetingViewList />}></Route>
         </Routes>
     </section>
   );

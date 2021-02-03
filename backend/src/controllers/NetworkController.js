@@ -1,5 +1,8 @@
 import dotenv from "dotenv";
 import Web3 from "web3";
+import Issue from '../models/Issue';
+import Proof from '../models/Proof';
+
 import { abi, networks } from "../../dapp/build/contracts/dAppVote.json";
 // eslint-disable-next-line import/no-named-default
 import log from "../utils/providerLogs";
@@ -77,6 +80,15 @@ class NetworkController {
   }
 
   async store(req, res) {
+
+    //const { id } = req.params;
+    const id = 6;
+    const issue = await Issue.findByPk(id);
+
+    if (!issue) return res.status(400).json({ message: 'Issue not found!' });
+    const close_at = Date.now();
+      const newIssue = await issue.update({close_at});
+
     const { quorum, favorable, against, proposals } = await req.body;
     try {
       const {
@@ -93,6 +105,23 @@ class NetworkController {
         .storeVote(quorum, favorable, against, proposals)
         .send({ from: process.env.ACCOUNT, gas: 3000000 });
 
+
+      log(true, req.ip, req.url, "");
+
+
+      await Proof.create({
+        block_hash:blockHash,
+        block_number:blockNumber,
+        cumulative_gas_used:cumulativeGasUsed,
+        gas_used:gasUsed,
+        status,
+        from,
+        to,
+        transaction_hash:transactionHash,
+        transaction_index:transactionIndex,
+        issue_id:id
+      });
+
       res.json({
         blockHash,
         blockNumber,
@@ -104,6 +133,7 @@ class NetworkController {
         transactionHash,
         transactionIndex,
       });
+
     } catch (error) {
       await res.status(400).json({ message: error.message });
     }
@@ -113,16 +143,19 @@ class NetworkController {
     try {
       const { id } = req.params;
 
+      const data = await myContract.methods
+      .getVotings(id)
+      .call({ from: process.env.ACCOUNT });
       const {
         _quorum: quorum,
         _favorable: favorable,
         _against: against,
         _proposals: proposals,
         _timestamp: timestamp,
-      } = await myContract.methods
-        .getVotings(id)
-        .call({ from: process.env.ACCOUNT });
+      } = data;
+      console.log(data);
 
+      log(true, req.ip, req.url, "");
       res.json({
         quorum,
         favorable,

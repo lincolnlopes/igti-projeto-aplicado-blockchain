@@ -3,8 +3,9 @@ import databaseConfig from '../config/database';
 import User from '../models/User';
 import Meeting from '../models/Meeting';
 import Issue from '../models/Issue';
+import Proof from '../models/Proof';
 
-const models = [User, Meeting, Issue];
+const models = [User, Meeting, Issue, Proof];
 
 const connection = new Sequelize(databaseConfig);
 
